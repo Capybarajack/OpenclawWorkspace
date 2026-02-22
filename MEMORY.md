@@ -37,7 +37,7 @@
 - [P1][ts:2026-02-05] Progress: Supabase tables + RLS created; Nuxt Google OAuth login working. Next: upload images to Supabase Storage (`meal-photos`) + persist analysis results into `food_entries/items` and `daily_summaries`.
 - [P1][ts:2026-02-14] Frontend repo hygiene: after any `protaincare` frontend changes, **commit + push** to the HTTPS GitHub repo.
 - [P1][ts:2026-02-22] New project: **LINE 貼圖產生器** at `F:\openClaw\LINEsticker` (Vue+Capacitor frontend, Node API/worker, Python rembg service).
-- [P1][ts:2026-02-22] LINE 貼圖進度：Phase 0 已完成並 commit `bc50782`; Phase 1 已產生未提交修改（上傳/pack/job API、worker 去背+resize、SSE、compose/README 更新），待下次接續驗證與提交。
+- [P1][ts:2026-02-22] LINE 貼圖進度：Phase 0 已完成 commit `bc50782`；Phase 1 已完成 commit `8e011a6`（上傳/pack/job API、worker 去背+resize、SSE、compose、README、依賴安裝）。
 
 ## [P2] Temporary (30d)
 - [P2][ts:2026-02-14] Memory system upgrade: hot memory TTL + cold archive + daily janitor cron.
