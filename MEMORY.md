@@ -39,6 +39,7 @@
 - [P1][ts:2026-02-22] New project: **LINE 貼圖產生器** at `F:\openClaw\LINEsticker` (Vue+Capacitor frontend, Node API/worker, Python rembg service).
 - [P1][ts:2026-02-22] LINE 貼圖進度：Phase 0 已完成 commit `bc50782`；Phase 1 已完成 commit `8e011a6`（上傳/pack/job API、worker 去背+resize、SSE、compose、README、依賴安裝）；Phase 2 已完成 commit `3942003`（單張重試 API、ZIP 匯出流程、export 狀態/下載 API、worker export-zip）。
 - [P1][ts:2026-02-23] LINE 貼圖進度：Phase 3（前端 wizard 串接）已完成 commit `79aad1f`（Step UI、Vue composable、API client、SSE+polling fallback、retry/export/download 串接、README 前端說明）。
+- [P1][ts:2026-02-23] LINE 貼圖進度：Phase 4（穩定化）已完成 commit `151d2aa`（retry 次數上限+backoff、export TTL/410、過期 ZIP 清理 timer、README/.env 更新）；Docker 引擎未啟動，完整 e2e smoke 待補。
 
 ## [P2] Temporary (30d)
 - [P2][ts:2026-02-14] Memory system upgrade: hot memory TTL + cold archive + daily janitor cron.
