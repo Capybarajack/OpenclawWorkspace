@@ -41,7 +41,7 @@
 - [P1][ts:2026-02-23] LINE 貼圖進度：Phase 3（前端 wizard 串接）已完成 commit `79aad1f`（Step UI、Vue composable、API client、SSE+polling fallback、retry/export/download 串接、README 前端說明）。
 - [P1][ts:2026-02-23] LINE 貼圖進度：Phase 4（穩定化）已完成 commit `151d2aa`（retry 次數上限+backoff、export TTL/410、過期 ZIP 清理 timer、README/.env 更新）；Docker 引擎未啟動，完整 e2e smoke 待補。
 - [P1][ts:2026-02-23] LINE 貼圖開發體驗：已補無 Docker 本機啟動腳本 commit `96a35f6`（`scripts/dev-local.ps1` + `scripts/dev-local-stop.ps1` + README）；後續修正 commit `8689b69`（支援 `py` fallback，`-NoRemBg` 跳過 Python 檢查）。
-- [P1][ts:2026-02-23] LINE 貼圖進度：正在做 queue 雙模式（`QUEUE_MODE=redis|local`）以支援無 Redis 開發；目前有未提交改動於 `.env.example`、`README.md`、`scripts/dev-local.ps1`、`services/api/src/server.ts`、`services/worker/src/worker.ts`。
+- [P1][ts:2026-02-24] LINE 貼圖進度：queue 雙模式（`QUEUE_MODE=redis|local`）已完成 commit `f60cd30`（API queue adapter、worker local file queue polling、README/.env/dev-local 更新）；`QUEUE_MODE=local` smoke 已驗證可消化 job。
 
 ## [P2] Temporary (30d)
 - [P2][ts:2026-02-14] Memory system upgrade: hot memory TTL + cold archive + daily janitor cron.
