@@ -1,9 +1,9 @@
 param(
-  [Parameter(Mandatory = $true)]
-  [string]$SourceDbPath,
+  [Parameter(Mandatory = $false)]
+  [string]$SourceDbPath = (Join-Path $env:USERPROFILE ".openclaw\memory\lancedb-pro"),
 
   [Parameter(Mandatory = $false)]
-  [string]$OutputRoot = "$PSScriptRoot/../assets/memory-snapshot"
+  [string]$OutputRoot = (Join-Path $PSScriptRoot "..\assets\memory-snapshot")
 )
 
 $ErrorActionPreference = 'Stop'
@@ -24,8 +24,13 @@ function Get-DirAggregateHash {
 $src = (Resolve-Path $SourceDbPath).Path
 if (-not (Test-Path $src)) { throw "SourceDbPath not found: $SourceDbPath" }
 
+if (-not (Test-Path $OutputRoot)) {
+  New-Item -ItemType Directory -Force -Path $OutputRoot | Out-Null
+}
+
+$outputRootResolved = (Resolve-Path $OutputRoot).Path
 $version = (Get-Date).ToUniversalTime().ToString('yyyyMMddTHHmmssZ')
-$snapshotDir = Join-Path (Resolve-Path $OutputRoot).Path $version
+$snapshotDir = Join-Path $outputRootResolved $version
 $dbDir = Join-Path $snapshotDir 'db'
 
 New-Item -ItemType Directory -Force -Path $dbDir | Out-Null

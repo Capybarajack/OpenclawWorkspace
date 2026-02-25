@@ -2,8 +2,8 @@ param(
   [Parameter(Mandatory = $true)]
   [string]$SnapshotDir,
 
-  [Parameter(Mandatory = $true)]
-  [string]$TargetDbPath,
+  [Parameter(Mandatory = $false)]
+  [string]$TargetDbPath = (Join-Path $env:USERPROFILE ".codex\memory\openclaw-lancedb-pro"),
 
   [switch]$NoBackup
 )
@@ -37,6 +37,11 @@ if ($manifest.aggregateSha256 -ne $currentHash) {
 }
 
 $target = $TargetDbPath
+$parent = Split-Path -Path $target -Parent
+if ($parent -and -not (Test-Path $parent)) {
+  New-Item -ItemType Directory -Force -Path $parent | Out-Null
+}
+
 if (Test-Path $target) {
   if (-not $NoBackup) {
     $backupPath = "$target.bak-" + (Get-Date).ToUniversalTime().ToString('yyyyMMddTHHmmssZ')
