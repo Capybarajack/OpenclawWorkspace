@@ -38,6 +38,15 @@ Output appears under:
 
 Transfer the full `<snapshotVersion>` folder securely.
 
+### Optional: one-click export + zip
+
+```powershell
+pwsh ./skills/codex-openclaw-shared-lancedb/scripts/export-and-zip-memory-snapshot.ps1
+```
+
+Zip output defaults to:
+`skills/codex-openclaw-shared-lancedb/assets/memory-snapshot-zips/<snapshotVersion>.zip`
+
 ## 3) Import on Codex machine
 
 Use defaults (recommended):
