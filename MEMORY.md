@@ -41,20 +41,6 @@
 - [P1][ts:2026-02-05] Stack: Frontend `F:\nodejs\protaincare` (Nuxt). Backend `F:\nodejs\proteinCare_Backend` (Node.js). Supabase for Auth/DB/RLS/Storage.
 - [P1][ts:2026-02-05] Progress: Supabase tables + RLS created; Nuxt Google OAuth login working. Next: upload images to Supabase Storage (`meal-photos`) + persist analysis results into `food_entries/items` and `daily_summaries`.
 - [P1][ts:2026-02-14] Frontend repo hygiene: after any `protaincare` frontend changes, **commit + push** to the HTTPS GitHub repo.
-- [P1][ts:2026-02-22] New project: **LINE 貼圖產生器** at `F:\openClaw\LINEsticker` (Vue+Capacitor frontend, Node API/worker, Python rembg service).
-- [P1][ts:2026-02-22] LINE 貼圖進度：Phase 0 已完成 commit `bc50782`；Phase 1 已完成 commit `8e011a6`（上傳/pack/job API、worker 去背+resize、SSE、compose、README、依賴安裝）；Phase 2 已完成 commit `3942003`（單張重試 API、ZIP 匯出流程、export 狀態/下載 API、worker export-zip）。
-- [P1][ts:2026-02-23] LINE 貼圖進度：Phase 3（前端 wizard 串接）已完成 commit `79aad1f`（Step UI、Vue composable、API client、SSE+polling fallback、retry/export/download 串接、README 前端說明）。
-- [P1][ts:2026-02-23] LINE 貼圖進度：Phase 4（穩定化）已完成 commit `151d2aa`（retry 次數上限+backoff、export TTL/410、過期 ZIP 清理 timer、README/.env 更新）；Docker 引擎未啟動，完整 e2e smoke 待補。
-- [P1][ts:2026-02-23] LINE 貼圖開發體驗：已補無 Docker 本機啟動腳本 commit `96a35f6`（`scripts/dev-local.ps1` + `scripts/dev-local-stop.ps1` + README）；後續修正 commit `8689b69`（支援 `py` fallback，`-NoRemBg` 跳過 Python 檢查）。
-- [P1][ts:2026-02-24] LINE 貼圖進度：queue 雙模式（`QUEUE_MODE=redis|local`）已完成 commit `f60cd30`（API queue adapter、worker local file queue polling、README/.env/dev-local 更新）；`QUEUE_MODE=local` smoke 已驗證可消化 job。
-- [P1][ts:2026-02-24] LINE 貼圖目前卡點：正在補 rembg 本機環境；已調整 `services/rembg-service/requirements.txt` 到 `rembg==2.0.72` + `pillow==12.1.0`，但依賴尚未完成安裝（目前 `fastapi` import 失敗）。
-- [P1][ts:2026-02-25] 已定位 rembg 卡點根因：本機僅有 Python 3.14，當前 FastAPI/Pydantic 依賴在 3.14 會噴 `_eval_type ... prefer_fwd_module` 錯誤；已加入 `scripts/dev-local.ps1` 版本守門（要求 Python 3.10-3.13）並更新 README，commit `81b89b5`。
-- [P1][ts:2026-02-25] 已安裝 Python 3.13.2，並完成 `py -3.13 -m pip install -r services/rembg-service/requirements.txt` + `rembg[cpu]==2.0.72`；`py -3.13` import 驗證通過。當前未解：`dev-local.ps1` 仍優先抓到 3.14（`python` 不在 PATH、`py` 預設指向 3.14），需改為顯式使用 `py -3.13` 或調整啟動器預設版本。
-- [P1][ts:2026-02-27] LINE 貼圖本機啟動器已完成修正：`scripts/dev-local.ps1` 強制 rembg 使用 `py -3.13`（版本檢查/依賴檢查/uvicorn 啟動皆固定 3.13），commit `edd239c`。
-- [P1][ts:2026-02-27] 完整本機 e2e smoke（上傳→去背→重試→匯出 ZIP→下載）尚未完全通過；目前觀察到本機多組殘留服務/埠衝突與 queue/job 殘留導致流程卡在 `queued` 或 worker callback `fetch failed`，需先清空殘留進程後再跑乾淨驗證。
-- [P1][ts:2026-02-27] LINE 貼圖 pipeline 新版：`remove-bg(原圖) -> nano-banana stylize -> remove-bg(風格化結果) -> resize(370x320) -> PNG`；已移除底部半透明文字條，文字僅作為 stylization prompt context。
-- [P1][ts:2026-02-27] 若前端進度卡住且無明顯錯誤，先檢查是否同時跑了多組 API/worker/rembg；重複服務會造成 queue/狀態顯示異常，需先全清進程再單組重啟。
-- [P1][ts:2026-02-27] Local 手動啟動需確保 worker 讀到 `GEMINI_API_KEY`（從 User/Process env 注入），否則 nano-banana 會回 `GEMINI_API_KEY is required for nano-banana stylization`。
 
 ## [P2] Temporary (30d)
 - [P2][ts:2026-02-14] Memory system upgrade: hot memory TTL + cold archive + daily janitor cron.
