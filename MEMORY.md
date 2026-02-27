@@ -30,6 +30,7 @@
 - [P0] PowerShell: bash-style input redirection `<` isn’t supported; use piping (e.g. `Get-Content file | ...`).
 - [P0] Telegram ops: apply `telegram-retry-guard` (max **3 attempts**) for Telegram-origin messages.
 - [P0] Model preference: default to **openai-codex/gpt-5.3-codex** for future sessions when selectable.
+- [P0] Execution cadence preference (群傑): use **小步快跑** with each step capped at **8 minutes**, and report per step: changes made, verification result, and next step.
 - [P0] Rule 6 — LanceDB Pro 雙層記憶存儲（鐵律）: 每次 pitfall/lesson 後，**立刻**寫入兩筆記憶再進下一題：Technical layer（`Pitfall/Cause/Fix/Prevention`，category `fact`，importance ≥ 0.8）+ Principle layer（`Decision principle/Trigger/Action`，category `decision`，importance ≥ 0.85）；每次寫入後立刻 `memory_recall` 用錨點關鍵字驗證，找不到就改寫重存；缺任一層視為未完成；並同步更新相關 SKILL.md 防再犯。
 - [P0] Rule 7 — LanceDB 衛生: 記憶條目必須短且原子（<500 chars），禁止原始對話摘要/大段內容/重複項；優先結構化與可檢索關鍵字。
 - [P0] Rule 8 — Recall before retry: 任何工具失敗、重複錯誤或異常行為，**先**用錯誤訊息/工具名/症狀做 `memory_recall` 再重試，避免盲目重試。
