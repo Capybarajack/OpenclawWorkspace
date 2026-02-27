@@ -52,6 +52,9 @@
 - [P1][ts:2026-02-25] 已安裝 Python 3.13.2，並完成 `py -3.13 -m pip install -r services/rembg-service/requirements.txt` + `rembg[cpu]==2.0.72`；`py -3.13` import 驗證通過。當前未解：`dev-local.ps1` 仍優先抓到 3.14（`python` 不在 PATH、`py` 預設指向 3.14），需改為顯式使用 `py -3.13` 或調整啟動器預設版本。
 - [P1][ts:2026-02-27] LINE 貼圖本機啟動器已完成修正：`scripts/dev-local.ps1` 強制 rembg 使用 `py -3.13`（版本檢查/依賴檢查/uvicorn 啟動皆固定 3.13），commit `edd239c`。
 - [P1][ts:2026-02-27] 完整本機 e2e smoke（上傳→去背→重試→匯出 ZIP→下載）尚未完全通過；目前觀察到本機多組殘留服務/埠衝突與 queue/job 殘留導致流程卡在 `queued` 或 worker callback `fetch failed`，需先清空殘留進程後再跑乾淨驗證。
+- [P1][ts:2026-02-27] LINE 貼圖 pipeline 新版：`remove-bg(原圖) -> nano-banana stylize -> remove-bg(風格化結果) -> resize(370x320) -> PNG`；已移除底部半透明文字條，文字僅作為 stylization prompt context。
+- [P1][ts:2026-02-27] 若前端進度卡住且無明顯錯誤，先檢查是否同時跑了多組 API/worker/rembg；重複服務會造成 queue/狀態顯示異常，需先全清進程再單組重啟。
+- [P1][ts:2026-02-27] Local 手動啟動需確保 worker 讀到 `GEMINI_API_KEY`（從 User/Process env 注入），否則 nano-banana 會回 `GEMINI_API_KEY is required for nano-banana stylization`。
 
 ## [P2] Temporary (30d)
 - [P2][ts:2026-02-14] Memory system upgrade: hot memory TTL + cold archive + daily janitor cron.
