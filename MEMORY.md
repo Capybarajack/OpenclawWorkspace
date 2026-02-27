@@ -50,6 +50,8 @@
 - [P1][ts:2026-02-24] LINE 貼圖目前卡點：正在補 rembg 本機環境；已調整 `services/rembg-service/requirements.txt` 到 `rembg==2.0.72` + `pillow==12.1.0`，但依賴尚未完成安裝（目前 `fastapi` import 失敗）。
 - [P1][ts:2026-02-25] 已定位 rembg 卡點根因：本機僅有 Python 3.14，當前 FastAPI/Pydantic 依賴在 3.14 會噴 `_eval_type ... prefer_fwd_module` 錯誤；已加入 `scripts/dev-local.ps1` 版本守門（要求 Python 3.10-3.13）並更新 README，commit `81b89b5`。
 - [P1][ts:2026-02-25] 已安裝 Python 3.13.2，並完成 `py -3.13 -m pip install -r services/rembg-service/requirements.txt` + `rembg[cpu]==2.0.72`；`py -3.13` import 驗證通過。當前未解：`dev-local.ps1` 仍優先抓到 3.14（`python` 不在 PATH、`py` 預設指向 3.14），需改為顯式使用 `py -3.13` 或調整啟動器預設版本。
+- [P1][ts:2026-02-27] LINE 貼圖本機啟動器已完成修正：`scripts/dev-local.ps1` 強制 rembg 使用 `py -3.13`（版本檢查/依賴檢查/uvicorn 啟動皆固定 3.13），commit `edd239c`。
+- [P1][ts:2026-02-27] 完整本機 e2e smoke（上傳→去背→重試→匯出 ZIP→下載）尚未完全通過；目前觀察到本機多組殘留服務/埠衝突與 queue/job 殘留導致流程卡在 `queued` 或 worker callback `fetch failed`，需先清空殘留進程後再跑乾淨驗證。
 
 ## [P2] Temporary (30d)
 - [P2][ts:2026-02-14] Memory system upgrade: hot memory TTL + cold archive + daily janitor cron.
