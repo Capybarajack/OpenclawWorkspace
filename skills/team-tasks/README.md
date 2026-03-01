@@ -15,7 +15,8 @@ Three coordination modes for different workflows:
 ## Requirements
 
 - Python 3.12+ (stdlib only, no external dependencies)
-- Data stored as JSON in `/home/ubuntu/clawd/data/team-tasks/` (override with `TEAM_TASKS_DIR` env var)
+- Data stored as JSON in `<workspace>/data/team-tasks/` by default (portable across machines)
+  - Override with `TEAM_TASKS_DIR` env var when needed
 
 ## Installation
 
@@ -304,13 +305,20 @@ $TM round my-debate start
 ## Data Storage
 
 Project files are stored as JSON at:
-```
-/home/ubuntu/clawd/data/team-tasks/<project>.json
+
+- Default: `<workspace>/data/team-tasks/<project>.json`
+- If `TEAM_TASKS_DIR` is set, it takes precedence.
+
+Cross-platform examples:
+
+```bash
+# Linux/macOS
+export TEAM_TASKS_DIR="$HOME/.openclaw/workspace/data/team-tasks"
 ```
 
-Override with environment variable:
-```bash
-export TEAM_TASKS_DIR=/custom/path
+```powershell
+# Windows PowerShell
+$env:TEAM_TASKS_DIR = "$HOME/.openclaw/workspace/data/team-tasks"
 ```
 
 ## Project Structure

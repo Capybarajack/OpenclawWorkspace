@@ -4,25 +4,26 @@ This template runs the same `team-tasks` pipeline locally (no Telegram dispatch)
 
 ## 1) Initialize project
 
-```bash
-# Windows
-$TM = "py C:/Users/asdfg/.openclaw/workspace/skills/team-tasks/scripts/task_manager.py"
-& $TM init local-template -g "Build feature via local multi-agent pipeline" -p "code-agent,test-agent,docs-agent,monitor-bot"
+Resolve `<skill-dir>` as the directory containing this skill (the folder that has `SKILL.md`).
+Use `<python>` as `python` on Windows and typically `python3` on Linux/macOS.
+
+```powershell
+# Windows PowerShell
+python <skill-dir>/scripts/task_manager.py init local-template -g "Build feature via local multi-agent pipeline" -p "code-agent,test-agent,docs-agent,monitor-bot"
 ```
 
 ```bash
 # Linux/macOS
-TM="python3 <skill-dir>/scripts/task_manager.py"
-$TM init local-template -g "Build feature via local multi-agent pipeline" -p "code-agent,test-agent,docs-agent,monitor-bot"
+python3 <skill-dir>/scripts/task_manager.py init local-template -g "Build feature via local multi-agent pipeline" -p "code-agent,test-agent,docs-agent,monitor-bot"
 ```
 
 ## 2) Assign stage tasks
 
 ```bash
-$TM assign local-template code-agent "Implement feature X in <repo-path>"
-$TM assign local-template test-agent "Add/update tests for feature X"
-$TM assign local-template docs-agent "Update docs/changelog for feature X"
-$TM assign local-template monitor-bot "Audit quality, risk, and readiness"
+<python> <skill-dir>/scripts/task_manager.py assign local-template code-agent "Implement feature X in <repo-path>"
+<python> <skill-dir>/scripts/task_manager.py assign local-template test-agent "Add/update tests for feature X"
+<python> <skill-dir>/scripts/task_manager.py assign local-template docs-agent "Update docs/changelog for feature X"
+<python> <skill-dir>/scripts/task_manager.py assign local-template monitor-bot "Audit quality, risk, and readiness"
 ```
 
 ## 3) Local dispatch loop (orchestrator behavior)
@@ -66,7 +67,13 @@ Do not remove Telegram bindings/groups. Local mode only changes dispatch method 
 
 Both can coexist with the same `task_manager.py` project/state model.
 
-## 5) Quick smoke test task texts
+## 5) Cross-machine portability checklist
+
+- Keep this whole folder in git: `skills/team-tasks/`
+- Keep pipeline state in repo path: `data/team-tasks/` (or set `TEAM_TASKS_DIR` explicitly)
+- On a new machine, clone repo then run commands via `<python> <skill-dir>/scripts/task_manager.py ...`
+
+## 6) Quick smoke test task texts
 
 - code-agent: `Create hello endpoint and wiring`
 - test-agent: `Add endpoint tests`

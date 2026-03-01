@@ -29,9 +29,11 @@ import json
 import os
 import sys
 from datetime import datetime, timezone
+from pathlib import Path
 
 DEFAULT_PIPELINE = ["code-agent", "test-agent", "docs-agent", "monitor-bot"]
-TASKS_DIR = os.environ.get("TEAM_TASKS_DIR", "/home/ubuntu/clawd/data/team-tasks")
+DEFAULT_TASKS_DIR = str((Path(__file__).resolve().parents[3] / "data" / "team-tasks"))
+TASKS_DIR = os.environ.get("TEAM_TASKS_DIR", DEFAULT_TASKS_DIR)
 
 
 def now_iso():

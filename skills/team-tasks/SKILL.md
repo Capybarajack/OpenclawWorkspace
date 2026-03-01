@@ -304,7 +304,7 @@ Reference workflow: `docs/LOCAL_TEMPLATE.md`.
 ## Data Location
 
 Task files are stored under `TEAM_TASKS_DIR/<project>.json`.
-If `TEAM_TASKS_DIR` is not set, the script uses its internal default path.
+If `TEAM_TASKS_DIR` is not set, default is `<workspace>/data/team-tasks/<project>.json` (portable across machines after clone).
 
 ## Common Pitfalls
 
