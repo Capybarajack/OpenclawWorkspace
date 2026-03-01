@@ -302,6 +302,13 @@ $TM add-debater my-debate agent-b
 $TM round my-debate start
 ```
 
+## One-Click Local Smoke Test
+
+Use the platform-specific copy/paste command in:
+- `docs/LOCAL_TEMPLATE.md` → **"6) One-click smoke test commands"**
+
+This creates/overwrites `local-smoke`, assigns all 4 pipeline stages, then prints status.
+
 ## Data Storage
 
 Project files are stored as JSON at:

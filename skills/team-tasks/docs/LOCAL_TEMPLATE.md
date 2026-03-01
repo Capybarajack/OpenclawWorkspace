@@ -73,7 +73,31 @@ Both can coexist with the same `task_manager.py` project/state model.
 - Keep pipeline state in repo path: `data/team-tasks/` (or set `TEAM_TASKS_DIR` explicitly)
 - On a new machine, clone repo then run commands via `<python> <skill-dir>/scripts/task_manager.py ...`
 
-## 6) Quick smoke test task texts
+## 6) One-click smoke test commands
+
+Set `<skill-dir>` to this skill folder first.
+
+```powershell
+# Windows PowerShell (copy/paste once)
+python <skill-dir>/scripts/task_manager.py init local-smoke -f -g "Local smoke test" -p "code-agent,test-agent,docs-agent,monitor-bot"; `
+python <skill-dir>/scripts/task_manager.py assign local-smoke code-agent "Create hello endpoint and wiring"; `
+python <skill-dir>/scripts/task_manager.py assign local-smoke test-agent "Add endpoint tests"; `
+python <skill-dir>/scripts/task_manager.py assign local-smoke docs-agent "Document endpoint usage"; `
+python <skill-dir>/scripts/task_manager.py assign local-smoke monitor-bot "Check quality and release notes"; `
+python <skill-dir>/scripts/task_manager.py status local-smoke
+```
+
+```bash
+# macOS/Linux (copy/paste once)
+python3 <skill-dir>/scripts/task_manager.py init local-smoke -f -g "Local smoke test" -p "code-agent,test-agent,docs-agent,monitor-bot" && \
+python3 <skill-dir>/scripts/task_manager.py assign local-smoke code-agent "Create hello endpoint and wiring" && \
+python3 <skill-dir>/scripts/task_manager.py assign local-smoke test-agent "Add endpoint tests" && \
+python3 <skill-dir>/scripts/task_manager.py assign local-smoke docs-agent "Document endpoint usage" && \
+python3 <skill-dir>/scripts/task_manager.py assign local-smoke monitor-bot "Check quality and release notes" && \
+python3 <skill-dir>/scripts/task_manager.py status local-smoke
+```
+
+## 7) Quick smoke test task texts
 
 - code-agent: `Create hello endpoint and wiring`
 - test-agent: `Add endpoint tests`
