@@ -11,16 +11,19 @@ If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out w
 Before doing anything else:
 1. Read `SOUL.md` — this is who you are
 2. Read `USER.md` — this is who you're helping
-3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
-4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
+3. **If in MAIN SESSION** (direct chat with your human): read `MEMORY.md` (hot memory; keep it short)
+4. **Do NOT auto-load daily logs** (`memory/YYYY-MM-DD.md`). Only read them when:
+   - the user explicitly asks, or
+   - you’re doing a summarization/archival task (e.g. running the memory janitor)
 
 Don't ask permission. Just do it.
 
 ## Memory
 
 You wake up fresh each session. These files are your continuity:
-- **Daily notes:** `memory/YYYY-MM-DD.md` (create `memory/` if needed) — raw logs of what happened
-- **Long-term:** `MEMORY.md` — your curated memories, like a human's long-term memory
+- **Hot memory:** `MEMORY.md` — curated, high-signal memory (keep it short; loaded in main sessions)
+- **Cold memory:** `memory/archive/` — expired/archived items (kept searchable via semantic search)
+- **Raw logs:** `memory/YYYY-MM-DD.md` — raw logs of what happened (keep them, but do not auto-load)
 
 Capture what matters. Decisions, context, things to remember. Skip the secrets unless asked to keep them.
 
@@ -177,12 +180,11 @@ You are free to edit `HEARTBEAT.md` with a short checklist or reminders. Keep it
 
 ### 🔄 Memory Maintenance (During Heartbeats)
 Periodically (every few days), use a heartbeat to:
-1. Read through recent `memory/YYYY-MM-DD.md` files
-2. Identify significant events, lessons, or insights worth keeping long-term
-3. Update `MEMORY.md` with distilled learnings
-4. Remove outdated info from MEMORY.md that's no longer relevant
+1. Review `MEMORY.md` for staleness / pruning opportunities
+2. Run `memory-janitor.py` (or check its latest run output) to keep hot memory small
+3. **Do not auto-read raw daily logs** (`memory/YYYY-MM-DD.md`) unless the user explicitly asks for a retrospective / summary
 
-Think of it like a human reviewing their journal and updating their mental model. Daily files are raw notes; MEMORY.md is curated wisdom.
+Think of it like a human keeping a short "working memory" (MEMORY.md) while leaving journals as raw history.
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 

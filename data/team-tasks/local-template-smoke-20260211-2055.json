@@ -1,0 +1,90 @@
+{
+  "project": "local-template-smoke-20260211-2055",
+  "goal": "Local team-tasks smoke test",
+  "created": "2026-02-11T12:54:51.367809+00:00",
+  "updated": "2026-02-11T12:56:54.310320+00:00",
+  "status": "completed",
+  "mode": "linear",
+  "workspace": "",
+  "pipeline": [
+    "code-agent",
+    "test-agent",
+    "docs-agent",
+    "monitor-bot"
+  ],
+  "currentStage": null,
+  "stages": {
+    "code-agent": {
+      "agent": "code-agent",
+      "status": "done",
+      "task": "Smoke test only: reply with 'code-agent smoke OK' and 1 sentence describing normal coding stage.",
+      "startedAt": "2026-02-11T12:55:16.349837+00:00",
+      "completedAt": "2026-02-11T12:56:22.710934+00:00",
+      "output": "spawn accepted runId=afdba82f-951c-44fb-8713-782df8c0840d",
+      "logs": [
+        {
+          "time": "2026-02-11T12:55:16.349850+00:00",
+          "event": "status: pending ¡÷ in-progress"
+        },
+        {
+          "time": "2026-02-11T12:56:22.710948+00:00",
+          "event": "status: in-progress ¡÷ done"
+        }
+      ]
+    },
+    "test-agent": {
+      "agent": "test-agent",
+      "status": "done",
+      "task": "Smoke test only: reply with 'test-agent smoke OK' and 1 sentence describing normal testing stage.",
+      "startedAt": "2026-02-11T12:56:22.852669+00:00",
+      "completedAt": "2026-02-11T12:56:33.078021+00:00",
+      "output": "spawn accepted runId=d1e15783-dc9f-43e1-bd71-6853cbeaaaea",
+      "logs": [
+        {
+          "time": "2026-02-11T12:56:22.852696+00:00",
+          "event": "status: pending ¡÷ in-progress"
+        },
+        {
+          "time": "2026-02-11T12:56:33.078034+00:00",
+          "event": "status: in-progress ¡÷ done"
+        }
+      ]
+    },
+    "docs-agent": {
+      "agent": "docs-agent",
+      "status": "done",
+      "task": "Smoke test only: reply with 'docs-agent smoke OK' and 1 sentence describing normal docs stage.",
+      "startedAt": "2026-02-11T12:56:33.215985+00:00",
+      "completedAt": "2026-02-11T12:56:43.398184+00:00",
+      "output": "spawn accepted runId=f9b5f8cd-c206-4b2c-a2cf-199e379fa853",
+      "logs": [
+        {
+          "time": "2026-02-11T12:56:33.216000+00:00",
+          "event": "status: pending ¡÷ in-progress"
+        },
+        {
+          "time": "2026-02-11T12:56:43.398197+00:00",
+          "event": "status: in-progress ¡÷ done"
+        }
+      ]
+    },
+    "monitor-bot": {
+      "agent": "monitor-bot",
+      "status": "done",
+      "task": "Smoke test only: reply with 'monitor-bot smoke OK' and 1 sentence describing normal review stage.",
+      "startedAt": "2026-02-11T12:56:43.528256+00:00",
+      "completedAt": "2026-02-11T12:56:54.310295+00:00",
+      "output": "spawn accepted runId=66f494f2-b557-4619-b9da-5bc48a9696bc",
+      "logs": [
+        {
+          "time": "2026-02-11T12:56:43.528270+00:00",
+          "event": "status: pending ¡÷ in-progress"
+        },
+        {
+          "time": "2026-02-11T12:56:54.310311+00:00",
+          "event": "status: in-progress ¡÷ done"
+        }
+      ]
+    }
+  }
+}
